@@ -46,8 +46,8 @@ for WASM in /target/wasm32-unknown-unknown/release/*.wasm; do
 
   OUT_FILENAME=$(basename "$WASM")
   echo "Minifying $OUT_FILENAME, make sure it is not stripped"
-  wasm-snip "$WASM" --snip-rust-fmt-code --snip-rust-panicking-code -p core::num::flt2dec::.* -p core::fmt::float::.*  \
-  --output "temp-$OUT_FILENAME"
+  wasm-snip "$WASM" --snip-rust-fmt-code --snip-rust-panicking-code -p core::num::flt2dec::.* -p core::fmt::float::.* \
+    --output "temp-$OUT_FILENAME"
   wasm-strip "temp-$OUT_FILENAME"
   echo "Optimizing $OUT_FILENAME ..."
   # --signext-lowering is needed to support blockchains runnning CosmWasm < 1.3. It can be removed eventually

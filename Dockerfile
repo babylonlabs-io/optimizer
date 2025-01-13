@@ -46,7 +46,7 @@ RUN mv binaryen-version_*/bin/wasm-opt /usr/local/bin
 # Download wabt sources
 RUN git clone https://github.com/WebAssembly/wabt.git
 
-# Extract and compile wasm-strip
+# Checkout and compile wasm-strip
 RUN apk update && apk add make
 RUN cd wabt && git checkout $WABT_VERSION && git submodule update --init && make clang-release
 
