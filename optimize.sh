@@ -45,6 +45,7 @@ for WASM in /target/wasm32-unknown-unknown/release/*.wasm; do
   [ -e "$WASM" ] || continue # https://superuser.com/a/519493
 
   OUT_FILENAME=$(basename "$WASM")
+  # Adapted from https://github.com/near/near-sdk-rs/blob/master/minifier/minify.sh
   echo "Minifying $OUT_FILENAME, make sure it is not stripped"
   wasm-snip "$WASM" --snip-rust-fmt-code --snip-rust-panicking-code -p core::num::flt2dec::.* -p core::fmt::float::.* \
     --output "temp-$OUT_FILENAME"
