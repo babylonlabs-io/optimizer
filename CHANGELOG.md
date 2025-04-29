@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.16.3] - 2025-04-29
+
+- Bump Rust to current stable 1.85.1
+
 ## [0.16.2] - 2025-01-13
 
 - Add extra minifying steps

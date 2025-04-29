@@ -1,4 +1,4 @@
-FROM rust:1.81.0-alpine AS targetarch
+FROM rust:1.85.1-alpine AS targetarch
 
 ARG BUILDPLATFORM
 ARG TARGETPLATFORM
@@ -93,7 +93,7 @@ RUN cd bob_the_builder && \
 #
 # rust-optimizer target
 #
-FROM rust:1.81.0-alpine AS rust-optimizer
+FROM rust:1.85.1-alpine AS rust-optimizer
 
 # Download the crates.io index using the new sparse protocol to improve performance
 ENV CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
@@ -118,7 +118,7 @@ RUN cargo install wasm-snip
 
 # clang and llvm are required for compiling rust-secp256k1 in rust-bitcoin
 RUN apk update && \
-    apk add --no-cache clang llvm
+  apk add --no-cache clang llvm
 
 # Assume we mount the source code in /code
 WORKDIR /code
