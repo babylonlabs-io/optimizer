@@ -2,7 +2,7 @@
 DN_OPTIMIZER := "babylonlabs/optimizer"
 DN_RUST_OPTIMIZER := "babylonlabs/rust-optimizer"
 DN_WORKSPACE_OPTIMIZER := "babylonlabs/workspace-optimizer"
-DOCKER_TAG := 0.16.3
+DOCKER_TAG := 0.16.4
 
 # Native arch
 BUILDARCH := $(shell uname -m)
