@@ -102,8 +102,11 @@ ENV CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 RUN apk update && \
   apk add --no-cache musl-dev
 
-# Setup Rust with Wasm support
-RUN rustup target add wasm32-unknown-unknown
+# Setup Rust with Wasm support via rustup and prevent
+# repeated syncing when `rust-toolchain.toml` exists in the contracts repo
+ENV RUSTUP_TOOLCHAIN=1.86.0
+RUN rustup install --profile minimal ${RUSTUP_TOOLCHAIN} && \
+    rustup target add wasm32-unknown-unknown --toolchain ${RUSTUP_TOOLCHAIN}
 
 # Add bob, wasm-opt and wasm-strip
 COPY --from=builder /usr/local/bin/bob /usr/local/bin
