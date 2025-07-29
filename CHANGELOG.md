@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.16.5] - 2025-07-29
+
+- Set Rust toolchain to 1.86.0 in Dockerfile, preventing the repeated Rust syncing when `rust-toolchain.toml` exists.
+
 ## [0.16.4] - 2025-07-26
 
 - Bump Rust to stable 1.86
